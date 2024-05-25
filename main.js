@@ -52,5 +52,6 @@ async function main() {
 	client.on("error", (error) => {
 		logger.write(LOGPATH, "error" + error);
 	});
+	client.login(TOKEN);
 }
 main();
