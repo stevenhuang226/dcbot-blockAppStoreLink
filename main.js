@@ -35,7 +35,7 @@ async function setLogPath() {
 	});
 }
 async function main() {
-	const Client, GatewayIntentBits = require("discord.js");
+	const { Client, GatewayIntentBits } = require("discord.js");
 	await setTOK();
 	await setLogPath();
 	console.log("token= %s", TOKEN);
