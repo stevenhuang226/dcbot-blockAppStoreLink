@@ -1,4 +1,3 @@
-const { Client, GatewayIntentBits } = require("discord.js");
 const rl = require("readline");
 const readline = rl.createInterface({
 	input: process.stdin,
