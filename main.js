@@ -40,6 +40,7 @@ async function main() {
 	await setLogPath();
 	console.log("token= %s", TOKEN);
 	console.log("log path= %s", LOGPATH);
+	const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildsMessages]});
 	client.on("ready", () => {
 		console.log(`logged in as ${client.user.tag}`)
 	});
