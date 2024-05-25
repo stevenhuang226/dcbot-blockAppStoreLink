@@ -10,6 +10,7 @@ console.log("token= %s", TOKEN);
 console.log("log path= %s", LOGPATH);
 const client = new Client({intents: [
 	GatewayIntentBits.Guilds,
+	GatewayIntentBits.GuildMessages,
 	GatewayIntentBits.MessageContent,
 ]});
 client.on("ready", () => {
@@ -17,6 +18,7 @@ client.on("ready", () => {
 	logger.write(LOGPATH, `log in as: ${client.user.tag}`)
 });
 client.on("messageCreate", async (message) => {
+	console.log('get message: ', message.content);
 	if ( /apps.apple.com/.test(message.content) ) {
 		logger.write(LOGPATH, "block" + message.content);
 	}

@@ -16,7 +16,7 @@ function write (logPath, data) { // return -1: path not access -2: error when wr
 	})
 };
 function stream (logPath, data) {
-	fs.appendFileSync(logPath,Date.now().toString() + data + "\n");
+	fs.appendFileSync(logPath,Date.now().toString() + " "+ data + "\n");
 }
 module.exports = {
 	write: write,
