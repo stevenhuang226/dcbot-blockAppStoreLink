@@ -1,4 +1,4 @@
-//const { Client, GatewayIntentBits } = require("discord.js");
+const { Client, GatewayIntentBits } = require("discord.js");
 const rl = require("readline");
 const readline = rl.createInterface({
 	input: process.stdin,
@@ -35,9 +35,21 @@ async function setLogPath() {
 	});
 }
 async function main() {
+	const Client, GatewayIntentBits = require("discord.js");
 	await setTOK();
 	await setLogPath();
 	console.log("token= %s", TOKEN);
 	console.log("log path= %s", LOGPATH);
+	client.on("ready", () => {
+		console.log(`logged in as ${client.user.tag}`)
+	});
+	client.on("messageCreate", async (message) => {
+		if ( /apps.apple.com/.test(message.content) ) {
+			logger.write(LOGPATH, "block" + message.content);
+		}
+	});
+	client.on("error", (error) => {
+		logger.write(LOGPATH, "error" + error);
+	});
 }
 main();
