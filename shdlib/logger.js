@@ -1,4 +1,4 @@
-function write (logPath, data) { // return -1: path not access -2: error when write data 0: write success
+function write (logPath, data) { // return -1: path not access -2: error when write data true(1): write success
 	const fs = require("node:fs");
 	fs.access(logPath, fs.constants.F_OK, function(error) {
 		if (error) {
@@ -11,22 +11,14 @@ function write (logPath, data) { // return -1: path not access -2: error when wr
 			catch (error) {
 				return -2;
 			}
-			return 0;
+			return true;
 		}
 	})
 };
-function pathCheck(logPath) {
-	const fs = require("node:fs");
-	fs.access(logPath, fs.constants.F_OK, function(error) {
-		if (error) {
-			return -1;
-		}
-		else {
-			return 0;
-		}
-	});
+function stream (logPath, data) {
+	fs.appendFileSync(logPath,Date.now().toString() + data + "\n");
 }
 module.exports = {
 	write: write,
-	check: pathCheck
+	stream: stream,
 }
