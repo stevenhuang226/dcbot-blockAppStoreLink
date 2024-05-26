@@ -1,8 +1,3 @@
-const rl = require("readline");
-const readline = rl.createInterface({
-	input: process.stdin,
-	output: process.stdout, 
-});
 const logger = require("./shdlib/logger.js");
 const { Client, GatewayIntentBits } = require("discord.js");
 const { TOKEN, LOGPATH } = require("./config.json")
