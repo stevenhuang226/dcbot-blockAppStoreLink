@@ -20,7 +20,9 @@ client.on("ready", () => {
 client.on("messageCreate", async (message) => {
 	console.log('get message: ', message.content);
 	if ( /apps.apple.com/.test(message.content) ) {
-		logger.write(LOGPATH, "block" + message.content);
+		await message.delete().then( message => {
+			logger.write(LOGPATH, `delete:${message.content} from ${message.author.username}`)
+		});
 	}
 });
 client.on("error", (error) => {
