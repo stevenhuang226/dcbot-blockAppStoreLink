@@ -18,7 +18,6 @@ client.on("ready", () => {
 	logger.write(LOGPATH, `log in as: ${client.user.tag}`)
 });
 client.on("messageCreate", async (message) => {
-	console.log('get message: ', message.content);
 	if ( /apps.apple.com/.test(message.content) ) {
 		await message.delete().then( message => {
 			logger.write(LOGPATH, `delete:${message.content} from ${message.author.username}`)
